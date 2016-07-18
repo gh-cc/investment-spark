@@ -1,4 +1,4 @@
-融资时间,融资公司,公司的种类,融资的轮次,公司地址,融资金额, 投资方（以空格分割),链接
+#融资时间,融资公司,公司的种类,融资的轮次,公司地址,融资金额, 投资方（以空格分割),链接
 2016.7.8,带来科技,企业服务,天使轮,上海,数百万人民币,创业接力(创业基金会) 中国风险投资,https://www.itjuzi.com/investevents/18293
 2016.7.8,天舍文化,游戏,A轮,上海,1000万人民币,顺荣三七互娱,https://www.itjuzi.com/investevents/18290
 2016.7.8,去日本,旅游,Pre-A轮,北京,1亿日元,Freebit Full Speed,https://www.itjuzi.com/investevents/18289
@@ -5474,8 +5474,6 @@
 2015.5.14,ITUI爱推网,教育,天使轮,北京,100万人民币,水木清华校友基金,https://www.itjuzi.com/investevents/13961
 2015.5.14,旅拍,本地生活,种子轮,广东,50万人民币,投资方未透露,https://www.itjuzi.com/investevents/14180
 2015.5.14,编程猫,教育,天使轮,广东,数百万人民币,猎豹移动,https://www.itjuzi.com/investevents/14234
-
-融资时间,融资公司,公司的种类,融资的轮次,公司地址,融资金额, 投资方（以空格分割),链接
 2015.5.14,桔子空间,企业服务,种子轮,上海,238万人民币,创业接力(创业基金会) IT桔子,https://www.itjuzi.com/investevents/15513
 2015.5.14,爱福窝,房产服务,A轮,上海,6250万人民币,宜华木业,https://www.itjuzi.com/investevents/8492
 2015.5.14,Face++旷视科技,企业服务,B轮,北京,2500万美元,启明创投 创新工场,https://www.itjuzi.com/investevents/8494
@@ -5574,7 +5572,6 @@
 2015.5.7,六畜兴网,电子商务,天使轮,河南,1000万人民币,投资方未透露,https://www.itjuzi.com/investevents/8402
 2015.5.7,今目标,企业服务,B轮,北京,6000万美元,Tiger老虎基金(中国),https://www.itjuzi.com/investevents/8405
 2015.5.7,BB车险,汽车交通,天使轮,北京,数千万人民币,投资方未透露,https://www.itjuzi.com/investevents/8406
-融资时间,融资公司,公司的种类,融资的轮次,公司地址,融资金额, 投资方（以空格分割),链接
 2015.5.7,食物日记,本地生活,种子轮,浙江,50万人民币,投资方未透露,https://www.itjuzi.com/investevents/8421
 2015.5.7,爱有财,金融,天使轮,北京,未透露,海通创意资本,https://www.itjuzi.com/investevents/8446
 2015.5.7,天子星,企业服务,A轮,北京,未透露,投资方未透露,https://www.itjuzi.com/investevents/8451
