@@ -37,9 +37,9 @@ round_rank varchar(150) default NULL
 
 create table if not exists fund_inf(
 id int primary key not NULL auto_increment,
-agency_id int  default NULL,
-leaderorfollow int  default NULL,
-company_id  int  default NULL,
+agency_name varchar(100)  default NULL,
+leaderorfollow int  default 2,
+company_name  varchar(100)   default NULL,
 fund_amount  double default 0.0,
 round_rank varchar(50) default NULL,
 fund_time date default NULL,
