@@ -21,7 +21,7 @@ object InSGraph {
     val event_data = sc.textFile("D:\\workspace\\investment-spark\\src\\main\\resources\\itjuzi_events_total.txt")
       .filter(!_.trim.startsWith("#")).map(_.split(",")).filter(_.length == 8)
 
-    
+    // (融资公司，投资公司)
     val ed = event_data.map(line => (line(1).trim,line(6).trim)).flatMap(line => {
       val tzgs: Array[String] = line._2.split(" +")
       var arr = new ArrayBuffer[(String,String)]()
@@ -38,8 +38,8 @@ object InSGraph {
     // 所有融资公司及投资公司 => 点
     val vd: RDD[String] = ed.flatMap(line => Array(line._1,line._2)).distinct()
 
-    val _vd = vd.map(name => (Tool.get(name).toLong,(name,0,0)))   
-    val _ed = ed.map(e => Edge(Tool.get(e._2),Tool.get(e._1),""))  
+    val _vd = vd.map(name => (Tool.get(name).toLong,(name,0,0)))   // (id,(name,出度，入度))
+    val _ed = ed.map(e => Edge(Tool.get(e._2),Tool.get(e._1),""))  // 投资，融资
     val graph = Graph(_vd,_ed)
 
 
