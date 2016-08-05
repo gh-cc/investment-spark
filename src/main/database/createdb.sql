@@ -68,3 +68,10 @@ work_experience varchar(400) default NULL,
 family_back  varchar(150) default NULL,
 venture_experience varchar(300) default NULL
 )engine =innodb auto_increment=1 default charset=utf8;
+
+create table if not exists score(
+id int primary key not null auto_increment,
+agency_id   int  not null,
+company_id  int  not null,
+score   double  default 0.0
+)engine =innodb auto_increment=1 default charset=utf8;
