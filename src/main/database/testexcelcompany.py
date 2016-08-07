@@ -10,13 +10,13 @@ sys.setdefaultencoding('utf-8')
 # Open the workbook and define the worksheet
 book = xlrd.open_workbook("/home/ubuntu/spark/companytest1.xlsx")
 sheet = book.sheet_by_name("Sheet1")
-#´´½¨Êı¾İ¿âÁ¬½Ó
+#åˆ›å»ºæ•°æ®åº“è¿æ¥
 database = pymysql.connect(host="localhost", user = "root", passwd = "root", db = "investmentdb", charset="utf8")
-#»ñµÃÓÎ±ê
+#è·å¾—æ¸¸æ ‡
 cursor = database.cursor()
-#´´½¨²åÈëÓï¾ä£¬²¢ÓëexcelÖĞµÄcolumn¶ÔÓ¦
+#åˆ›å»ºæ’å…¥è¯­å¥ï¼Œå¹¶ä¸excelä¸­çš„columnå¯¹åº”
 query = """INSERT INTO company(name,field_type,address,found_time,register_capital,stockholder,team,round_rank) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)"""
-#±éÀúexcelËùÓĞĞĞ
+#éå†excelæ‰€æœ‰è¡Œ
 for r in range(1, sheet.nrows):
       name = sheet.cell(r,0).value
       field_type = sheet.cell(r,1).value
@@ -27,13 +27,13 @@ for r in range(1, sheet.nrows):
       team = sheet.cell(r,6).value
       round_rank = sheet.cell(r,7).value
       values = (name,field_type,address,found_time,register_capital,stockholder,team,round_rank)
-    #Ö´ĞĞÒ»ĞĞ²åÈëÒ»´Î
+    #æ‰§è¡Œä¸€è¡Œæ’å…¥ä¸€æ¬¡
       cursor.execute(query, values)
-#¹Ø±ÕÓÎ±ê
+#å…³é—­æ¸¸æ ‡
 cursor.close()
-#Ìá½»Õû¸ö²åÈëÊı¾İÊÂÎñ
+#æäº¤æ•´ä¸ªæ’å…¥æ•°æ®äº‹åŠ¡
 database.commit()
-#Êı¾İÁ¬½Ó¹Ø±Õ
+#æ•°æ®è¿æ¥å…³é—­
 database.close()
-#ÈÎÎñ½áÊø±êÊ¶·´À¡
+#ä»»åŠ¡ç»“æŸæ ‡è¯†åé¦ˆ
 print "Done!"
