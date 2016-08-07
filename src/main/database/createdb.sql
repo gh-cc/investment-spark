@@ -75,3 +75,15 @@ agency_id   int  not null,
 company_id  int  not null,
 score   double  default 0.0
 )engine =innodb auto_increment=1 default charset=utf8;
+
+create table if not exists recommandresult(
+id int primary key not null auto_increment,
+company_id  int  not null,
+agency_strid   varchar(500)  not null
+)engine =innodb auto_increment=1 default charset=utf8;
+
+create table if not exists agencyinvestcount(
+id int primary key not null auto_increment,
+count_invest  int  default null,
+name_agency   varchar(100)  not null
+)engine =innodb auto_increment=1 default charset=utf8;
