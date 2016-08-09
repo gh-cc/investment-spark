@@ -1,9 +1,5 @@
 package main.alscala
 
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.mllib.recommendation.{ALS, Rating}
-import org.apache.spark.{SparkConf, SparkContext}
-
 
 /**
   * 本地模式运行
@@ -19,7 +15,7 @@ object alsforcompany {
     val ratings = data.map(_.split("::") match { case Array(company, investagency, rate, ts) =>
       Rating(company.toInt, investagency.toInt, rate.toDouble)
     }).cache()
-    
+
     val company = ratings.map(_.user).distinct()
     val investagency = ratings.map(_.product).distinct()
     println("Got "+ratings.count()+" ratings from "+company.count+" companies on "+investagency.count+" investagencies.")
@@ -46,7 +42,7 @@ object alsforcompany {
       ((user, product), rate)
     }.join(predictions)
 
-   //计算评估系数rmse越小推荐效果越好
+    //计算评估系数rmse越小推荐效果越好
     val rmse= math.sqrt(ratesAndPreds.map { case ((company, companyAgency), (r1, r2)) =>
       val err = (r1 - r2)
       err * err
@@ -58,14 +54,18 @@ object alsforcompany {
     val allRecs = model.recommendProductsForUsers(10).map{case (companyId,preArray)=>
       var productpre =""
       for(i <- 0 until 10){
-        productpre += preArray(i).product+"#"
+        if(i !=9)
+          productpre += companyId+","+preArray(i).product+","+preArray(i).rating+"\n"
+        else
+          productpre += companyId+","+preArray(i).product+","+preArray(i).rating
+
       }
-      (companyId,productpre)
+      (companyId, productpre)
     }
-   //并保存推荐结果
+    //并保存推荐结果
     val allpre = allRecs.sortBy(_._1).map{
-      case (companyId,productpre) => companyId+","+productpre
-    }.repartition(1).saveAsTextFile("/home/cgt/sparkcompetion/als/predict4")
+      case (companyId,productpre) => productpre
+    }.repartition(1).saveAsTextFile("/home/cgt/sparkcompetion/als/predict")
 
   }
 }

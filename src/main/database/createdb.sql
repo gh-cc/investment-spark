@@ -87,3 +87,11 @@ id int primary key not null auto_increment,
 count_invest  int  default null,
 name_agency   varchar(100)  not null
 )engine =innodb auto_increment=1 default charset=utf8;
+
+
+create table if not exists recommresult(
+id int primary key not null auto_increment,
+company_id  int  default null,
+agency_id  int  default  null,
+score  double default 0.0
+)engine =innodb auto_increment=1 default charset=utf8;
