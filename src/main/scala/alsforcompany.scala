@@ -1,18 +1,22 @@
 package main.alscala
 
+import org.apache.log4j.{Level, Logger}
+import org.apache.spark.mllib.recommendation.{ALS, Rating}
+import org.apache.spark.{SparkConf, SparkContext}
+
 
 /**
   * 本地模式运行
   */
-object alsforcompany {
+object alsforcompany{
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setMaster("local[*]").setAppName("als recommendation fro company")
     val sc = new SparkContext(conf)
     Logger.getRootLogger.setLevel(Level.ERROR)
     sc.setLogLevel("ERROR")
     // 1. 加载并解析数据
-    val data = sc.textFile("/opt/spark-1.6.1-bin-hadoop2.6/data/ml-1m/ratings.dat")
-    val ratings = data.map(_.split("::") match { case Array(company, investagency, rate, ts) =>
+    val data = sc.textFile("/home/cgt/sparkcompetion/investment-spark/src/main/resources/socrereal.txt")
+    val ratings = data.map(_.split(",") match { case Array(company, investagency, rate) =>
       Rating(company.toInt, investagency.toInt, rate.toDouble)
     }).cache()
 
